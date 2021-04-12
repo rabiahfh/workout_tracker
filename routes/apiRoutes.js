@@ -1,49 +1,51 @@
-module.exports = (app) => {
+//BACKEND
+
+const router = require('express').Router();
+const db = require('../models');
+
+router.get('/workouts', (req, res) => {
+  // Find me all of the workouts in our database
+  db.Workout.find({})
+    .then(workouts => {
+      // give that back to the frontend 
+      res.json(workouts);
+    })
+})
+
+router.put('/workouts/:id', (req, res) => {
+  db.Workout.findOneAndUpdate({ _id: req.params.id }, { $push: { exercises: req.body } })
+    .then(workout => {
+      res.json(workout);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+})
 
 
 
-app.post("/submit", ({body}, res) => {
-    // creating the book
-    db.Book.create(body)
-      // adding the book id to the library - new:true will force the return of the modified document
-      .then(({_id}) => db.Library.findOneAndUpdate({}, { $push: { books: _id } }, { new: true }))
-  
-      // we now have the library with the new book id
-      .then(dbLibrary => {
-        res.json(dbLibrary);
-      })
-      .catch(err => {
-        res.json(err);
-      });
-  });
-  
-  app.get("/books", (req, res) => {
-    db.Book.find({})
-      .then(dbBook => {
-        res.json(dbBook);
-      })
-      .catch(err => {
-        res.json(err);
-      });
-  });
-  
-  app.get("/library", (req, res) => {
-    db.Library.find({})
-      .then(dbLibrary => {
-        res.json(dbLibrary);
-      })
-      .catch(err => {
-        res.json(err);
-      });
-  });
-  
-  app.get("/populated", (req, res) => {
-    db.Library.find({})
-      .populate("books")
-      .then(dbLibrary => {
-        res.json(dbLibrary);
-      })
-      .catch(err => {
-        res.json(err);
-      });
-  })};
+
+router.post("/workouts", ({ body }, res) => {
+  // creating the book
+  db.Workout.create(body)
+    // adding the book id to the library - new:true will force the return of the modified document
+    .then((workout) => {
+      res.json(workout);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+router.get('/workouts/range', (req, res) => {
+  // Find me all of the workouts in our database
+  db.Workout.find({})
+    .then(workouts => {
+      // give that back to the frontend 
+      res.json(workouts);
+    })
+})
+
+
+
+module.exports = router;

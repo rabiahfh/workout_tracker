@@ -1,7 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
 const PORT = process.env.PORT || 3000;
 
 const db = require("./models");
@@ -15,17 +16,11 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate2", { useNewUrlParser: true });
+// Use the routes defined in the two route files 
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
-db.Library.create({ name: "Campus Library" })
-  .then(dbLibrary => {
-    console.log(dbLibrary);
-  })
-  .catch(({message}) => {
-    console.log(message);
-  });
-
-
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://rbhogans:medina45@cluster0.m9dxf.mongodb.net/workout?retryWrites=true&w=majority", { useNewUrlParser: true });
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
