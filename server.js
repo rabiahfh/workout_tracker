@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-// Use the routes defined in the two route files 
+// Use the api routes defined in the two route files 
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
