@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const path = require('path');
 
-// Allow the user to navigate to our html files 
+// Allow the user to navigate to the exercise page we want to send the exercise.html
 router.get('/exercise', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'exercise.html'));
 })
