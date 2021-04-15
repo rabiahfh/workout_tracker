@@ -26,8 +26,10 @@ The user, will be able to view create and track daily workouts. In addition, to 
 PHOTO OF MY ASSIGNMENT:
 
 
-<br>![photo of my assignment](images/workout.PNG)
+<br>![photo of my assignment](./Images/workout.PNG)
 
+
+[link to my assignment](https://github.com/rabiahfh/workout_tracker)
 
  ## Installation
   
