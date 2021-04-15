@@ -1,5 +1,5 @@
 //BACKEND
-
+// allows us to separate our routers into different files
 const router = require('express').Router();
 const db = require('../models');
 

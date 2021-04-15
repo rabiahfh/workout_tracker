@@ -21,7 +21,7 @@ app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
 // installed my connection from atlas with my name and password
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://user:onetwothree123@cluster0.m9dxf.mongodb.net/workout?retryWrites=true&w=majority", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://rbhogans:medina45@cluster0.m9dxf.mongodb.net/workout?retryWrites=true&w=majority", { useNewUrlParser: true });
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
