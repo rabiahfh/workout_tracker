@@ -29,7 +29,7 @@ PHOTO OF MY ASSIGNMENT:
 <br>![photo of my assignment](./Images/workout.PNG)
 
 
-[link to my assignment](https://workout-trackerrh.herokuapp.com/)
+[link to my project](https://workout-trackerrh.herokuapp.com/)
 
  ## Installation
   
